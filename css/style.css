@@ -1,0 +1,43 @@
+body {
+   background: linear-gradient(45deg, #c3ff98, #7be4fe);
+  }
+
+h1  {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 1rem;
+}
+#inline,
+a {
+    margin-top: 5px;
+    display: inline-block;
+    margin: center;
+    font-size:0.5em;
+    padding: 10px;
+    color : white;
+    text-decoration: none;
+}
+
+.menu{
+    display: inline;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: black;
+}
+
+.cadre{
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    padding :2%;
+    margin-top: 20px;
+}
+
+p,li{
+    font-size: 11px;
+}
+
+.imagecentrale{ 
+    display: flex;
+    justify-content: center;
+}
