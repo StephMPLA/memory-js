@@ -1,4 +1,17 @@
-//Tableau d'images
+//--------------Déclaration des variables------------------
+let premiereCarte = null;
+let deuxiemeCarte = null;
+let nombreDeCarteDecouverte = 0;
+let valeur1 = null;
+let valeur2 = null;
+//Nouveau tableau qui contiendra les 12 images mélangées
+let newTableImages = [];
+//index pour parcourir mon tableau
+let index = 1;
+//correspond au nombre de click 
+let count = 0;
+
+//Tableau d'images original
 const cards = [
     'img/1.svg',
     'img/2.svg',
@@ -8,17 +21,10 @@ const cards = [
     'img/6.svg',
 ];
 
-let newTableImages = [];
-let index = 1;
-let count = 0;
+//--------------Fonctions------------------
 
-//CREE UN TABLEAU de 12 images mélangées
+//Méthode pour ajouter les doublons de mes cartes et les mélangés dans un nouveau tableau
 boucleSurImages();
-let premiereCarte = null;
-let deuxiemeCarte = null;
-let nombreDeCarteDecouverte = 0;
-let valeur1 = null;
-let valeur2 = null;
 
 //function qui crée une suite aleatoire parmi nos 6 images * 2
 function boucleSurImages() {
@@ -35,21 +41,21 @@ function boucleSurImages() {
         //On ajoute les images mélangées dans un nouveau tableau 
         for (let j = 0; j < cards.length; j++) {
 
-            //ON ajoute les 6 images qui se trouvent dans cards[]
+            //On ajoute les 6 images qui se trouvent dans cards[]
             newTableImages.push(cards[j]);
         }
     }
 }
 
-//Creation du tableau
+//génération des différents éléments dans mon HTML
 function createCards(index) {
     let flipCard = document.createElement('div');
     flipCard.id = newTableImages[index];
     flipCard.classList.add('flip-card');
     flipCard.style.display = 'flex';
     flipCard.style.flex = 'wrap';
-    flipCard.style.width = '200px';
-    flipCard.style.height = '200px';
+    flipCard.style.width = '300px';
+    flipCard.style.height = '300px';
     let flipCardInner = document.createElement('div');
     flipCardInner.classList.add('flip-card-inner');
     let flipCardFront = document.createElement('div');
@@ -71,6 +77,7 @@ function createCards(index) {
     return flipCard;
 }
 
+//Ajoute mon tableau de cartes 
 init();
 function init() {
     let div = document.querySelector('div');
@@ -78,6 +85,7 @@ function init() {
         div.appendChild(createCards(index));
     }
 }
+
 
 const flipcards = document.querySelectorAll('.flip-card');
 
@@ -117,6 +125,7 @@ function verifCards(premiereCarte, deuxiemeCarte, valeur1,valeur2) {
         alert('Bien joué, une paire de trouvé');
     }
     else {
+        //Si les deux cartes ne sont pas identiques, on les retournent
         setTimeout(() => {
             valeur1.style.transform = 'rotateY(0deg)';
             valeur2.style.transform = 'rotateY(0deg)';
@@ -124,6 +133,5 @@ function verifCards(premiereCarte, deuxiemeCarte, valeur1,valeur2) {
             deuxiemeCarte = null;
             count = 0;
         },2000);
-        //Si les deux cartes ne sont pas identiques, on les retournent
     }
 }
