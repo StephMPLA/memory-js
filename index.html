@@ -8,19 +8,18 @@
     <meta name="description" content="Projet ENI, refaire le jeu Memory">
     <link rel="stylesheet" href="css/style.css">
     <title>Memory game</title>
-    <script src="js/custom.js"></script>
-    <script src="js/responsive.js"></script>
+    <script src="js/responsive.js" defer></script>
 </head>
 
 <body>
     <header>
-        <h1>Eni - MEMORY - ACCUEIL</h1>
+        <h1 id="titre">Eni - MEMORY - ACCUEIL</h1>
         <div class="menu">
-            <a href="index.html">Accueil</a>
-            <a href="sinscrire.html">S'inscrire</a>
-            <a href="test.html">Se connecter</a>
-            <a href="#">Profil</a>
-            <a href="jouer.html">Jouer</a>
+            <a href="index.html" class="liens">Accueil</a>
+            <a href="sinscrire.html" class="liens">S'inscrire</a>
+            <a href="#" class="liens">Se connecter</a>
+            <a href="#" class="liens">Profil</a>
+            <a href="jouer.html"class="liens">Jouer</a>
         </div>
     </header>
 
@@ -36,7 +35,7 @@
             <li>Si les images sont différentes, les cartes se retournent faces cachées là où elles étaient.</li>
             <li>La partie est terminée lorsque toutes les cartes ont été assemblées par paires.</li>
             <br>
-          <img src="img/memory_detail.png" width="100%" alt="">
+            <img src="img/memory_detail.png" width="40%" alt="tableau de légumes" id="tableauLegumes">
             <br>
             <p>
                 Si vous voulez vous souvenir de votre score. Inscrivez-vous via le formulaire. <br>

@@ -1,9 +1,14 @@
 //--------------Déclaration des variables------------------
 let premiereCarte = null;
 let deuxiemeCarte = null;
-let nombreDeCarteDecouverte = 0;
 let valeur1 = null;
 let valeur2 = null;
+let flipCard;
+let flipCardInner;
+let flipCardFront;
+let flipCardBack;
+let image;
+let imgCache;
 //Nouveau tableau qui contiendra les 12 images mélangées
 let newTableImages = [];
 //index pour parcourir mon tableau
@@ -49,23 +54,23 @@ function boucleSurImages() {
 
 //génération des différents éléments dans mon HTML
 function createCards(index) {
-    let flipCard = document.createElement('div');
+    flipCard = document.createElement('div');
     flipCard.id = newTableImages[index];
     flipCard.classList.add('flip-card');
     flipCard.style.display = 'flex';
     flipCard.style.flex = 'wrap';
     flipCard.style.width = '300px';
     flipCard.style.height = '300px';
-    let flipCardInner = document.createElement('div');
+    flipCardInner = document.createElement('div');
     flipCardInner.classList.add('flip-card-inner');
-    let flipCardFront = document.createElement('div');
+    flipCardFront = document.createElement('div');
     flipCardFront.classList.add('flip-card-front');
-    let image = document.createElement('img');
+    image = document.createElement('img');
     image.style.width = '200px';
     image.src = 'img/question.svg';
-    let flipCardBack = document.createElement('div');
+    flipCardBack = document.createElement('div');
     flipCardBack.classList.add('flip-card-back');
-    let imgCache = document.createElement('img');
+    imgCache = document.createElement('img');
     imgCache.src = newTableImages[index];
     imgCache.style.width = '200px';
     flipCard.appendChild(flipCardInner);
@@ -86,7 +91,6 @@ function init() {
     }
 }
 
-
 const flipcards = document.querySelectorAll('.flip-card');
 
 // Ajouter un écouteur d'événement de clic à chaque élément
@@ -97,18 +101,17 @@ flipcards.forEach((flipcard) => {
         if (count == 1) {
             premiereCarte = event.currentTarget;
             valeur1 = premiereCarte.querySelector('div');
-            rotateY(valeur1,premiereCarte);
+            rotateY(valeur1, premiereCarte);
         }
-        if(count == 2)
-        {
+        if (count == 2) {
             deuxiemeCarte = event.currentTarget;
             valeur2 = deuxiemeCarte.querySelector('div');
-            rotateY(valeur2,deuxiemeCarte);
+            rotateY(valeur2, deuxiemeCarte);
         }
         console.log(count);
         //Si deux cartes sont tirées
-        if (premiereCarte!=null && deuxiemeCarte!=null) {
-            verifCards(premiereCarte,deuxiemeCarte, valeur1,valeur2);
+        if (premiereCarte != null && deuxiemeCarte != null) {
+            verifCards(premiereCarte, deuxiemeCarte, valeur1, valeur2);
         }
     });
 });
@@ -118,7 +121,7 @@ function rotateY(valeur, nbCarte) {
     valeur.style.transform = 'rotateY(-180deg)';
 }
 
-function verifCards(premiereCarte, deuxiemeCarte, valeur1,valeur2) {
+function verifCards(premiereCarte, deuxiemeCarte, valeur1, valeur2) {
 
     if (premiereCarte.id === deuxiemeCarte.id) {
         //Si les deux cartes sont identiques, on les laisse visibles
@@ -132,6 +135,19 @@ function verifCards(premiereCarte, deuxiemeCarte, valeur1,valeur2) {
             premiereCarte = null;
             deuxiemeCarte = null;
             count = 0;
-        },2000);
+        }, 2000);
     }
 }
+
+//Recommencer la partie
+document.addEventListener('keydown', function (event) 
+{
+    if (event.code === 'Space') {
+        console.log('APPELER') 
+      //  boucleSurImages();
+        //document.querySelectorAll(flipCard).forEach(function (flipCard) {
+          //  flipCard.remove();
+          //  init();
+       // })
+    }
+});
